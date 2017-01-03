@@ -33,4 +33,18 @@ public class ContactHelper extends BaseHelper{
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+
+  }
+
+  public void deleteSelectedGroup() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+  }
+
+  public void confirmDeletion() {
+    wd.switchTo().alert().accept();
+
+  }
 }

@@ -4,9 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-/**
- * Created by bcxtim on 03.01.2017.
- */
 public class BaseHelper {
   protected FirefoxDriver wd;
 

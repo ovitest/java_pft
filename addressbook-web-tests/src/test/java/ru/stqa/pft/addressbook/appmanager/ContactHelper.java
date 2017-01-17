@@ -46,12 +46,28 @@ public class ContactHelper extends BaseHelper{
 
   }
 
-  public void deleteSelectedGroup() {
+  public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
   public void confirmDeletion() {
     wd.switchTo().alert().accept();
 
+  }
+
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact, true);
+    submitContactForm();
+
+
+  }
+
+  private void initContactCreation() {
+    click(By.xpath("//div[@id='nav']//a[.='add new']"));
+  }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }

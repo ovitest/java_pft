@@ -22,7 +22,7 @@ public class GroupData {
   }
 
   public GroupData(String name, String header, String footer) {
-    this.id = Integer.MAX_VALUE;
+    this.id = 0;
 
     this.name = name;
     this.header = header;
@@ -56,12 +56,15 @@ public class GroupData {
 
     GroupData groupData = (GroupData) o;
 
+    if (id != groupData.id) return false;
     return name != null ? name.equals(groupData.name) : groupData.name == null;
   }
 
   @Override
   public int hashCode() {
-    return name != null ? name.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
+    return result;
   }
 
 }

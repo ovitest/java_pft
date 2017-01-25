@@ -14,3 +14,5 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
 .idea/misc.xml
+sandbox/src/main/java/ru/stqa/pft/sandbox/Equation.java
+sandbox/src/test/java/ru/stqa/pft/sandbox/EquationsTests.java

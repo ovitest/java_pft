@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,9 +41,7 @@ public class ContactHelper extends BaseHelper{
   }
 
   public void initContactModification(ContactData contact) {
-    wd.findElement(By.cssSelector("a[href=\"edit.php?id=")).get(index).click();
-
-    wd.findElement(By.cssSelector("img[title=Edit]")).get(index).click();
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + contact.getId() +"']")).click();
 
   }
 
@@ -77,8 +75,8 @@ public class ContactHelper extends BaseHelper{
 
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    initContactModification(contact);
     fillContactForm(contact,            false);
     submitContactModification();
 
@@ -88,11 +86,6 @@ public class ContactHelper extends BaseHelper{
     click(By.xpath("//div[@id='nav']//a[.='add new']"));
   }
 
-  public void delete(int index) {
-    selectContact(index);
-    deleteSelectedContact();
-    confirmDeletion();
-  }
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
@@ -122,17 +115,4 @@ public class ContactHelper extends BaseHelper{
     return contacts;
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.name("entry"));
-    for (WebElement element: elements) {
-      List<WebElement> cells = element.findElements(By.tagName("td"));
-      String lastname = cells.get(1).getText();
-      String firstname = cells.get(2).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData().withId(id).withName(firstname).withLastname(lastname);
-      contacts.add(contact);
-    }
-    return contacts;
-  }
 }

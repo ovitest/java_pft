@@ -32,6 +32,7 @@ public class ContactAddressesTests extends TestBase {
 
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditPage)));
     assertThat(contact.getAddress(), equalTo(contactInfoFromEditPage.getAddress()));
+    assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditPage)));
   }
 
   private String mergePhones(ContactData contact) {
@@ -41,6 +42,11 @@ public class ContactAddressesTests extends TestBase {
 
   public static String cleaned(String phone){
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+  }
+
+  private String mergeEmails (ContactData contact) {
+    return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3()).stream()
+            .filter((s) -> ! s.equals("")).collect(Collectors.joining("\n"));
   }
 
 }

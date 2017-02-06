@@ -32,6 +32,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWork());
     type(By.name("email"), contactData.getEmail());
+    type(By.name("email2"), contactData.getEmail2());
+    type(By.name("email3"), contactData.getEmail3());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -42,17 +44,16 @@ public class ContactHelper extends BaseHelper {
 
   public void initContactModification(ContactData contact) {
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + contact.getId() + "']")).click();
+  }
 
+  private void lookAtDetails(ContactData contact) {
+    wd.findElement(By.cssSelector("a[href='view.php?id=" + contact.getId() + "']")).click();
   }
 
   public void submitContactModification() {
     click(By.xpath("//div[@id='content']/form[1]/input[22]"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-
-  }
 
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
@@ -144,4 +145,13 @@ public class ContactHelper extends BaseHelper {
 
 
   }
+
+  public String infoFromDetailsPage(ContactData contact) {
+    lookAtDetails(contact);
+    String details = wd.findElement(By.id("content")).getText();
+    wd.navigate().back();
+    return details;
+  }
+
+
 }

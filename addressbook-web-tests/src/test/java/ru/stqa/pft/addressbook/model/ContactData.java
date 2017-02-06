@@ -19,7 +19,6 @@ public class ContactData {
   private String allEmails;
   private String group;
 
-
   public ContactData withId(int id) {
     this.id = id;
     return this;
@@ -201,5 +200,6 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
 
 }

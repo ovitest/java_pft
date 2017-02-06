@@ -134,9 +134,9 @@ public class ContactHelper extends BaseHelper {
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     String address = wd.findElement(By.name("address")).getText();
-    String email = wd.findElement(By.name("email")).getText();
-    String email2 = wd.findElement(By.name("email2")).getText();
-    String email3 = wd.findElement(By.name("email3")).getText();
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withName(firstname)
             .withLastname(lastname).withAddress(address).withHome(home)

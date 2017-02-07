@@ -1,0 +1,112 @@
+<list>
+  <contact>
+    <name>name 0</name>
+    <lastname>lastname 0</lastname>
+    <address>address 0</address>
+    <home>0-0-0</home>
+    <mobile>222-222-0</mobile>
+    <work>(111) 123-45-0</work>
+    <email>0@test.test</email>
+    <email2>0@test.test2</email2>
+    <email3>0@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 1</name>
+    <lastname>lastname 1</lastname>
+    <address>address 1</address>
+    <home>1-1-1</home>
+    <mobile>222-222-1</mobile>
+    <work>(111) 123-45-1</work>
+    <email>1@test.test</email>
+    <email2>1@test.test2</email2>
+    <email3>1@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 2</name>
+    <lastname>lastname 2</lastname>
+    <address>address 2</address>
+    <home>2-2-2</home>
+    <mobile>222-222-2</mobile>
+    <work>(111) 123-45-2</work>
+    <email>2@test.test</email>
+    <email2>2@test.test2</email2>
+    <email3>2@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 3</name>
+    <lastname>lastname 3</lastname>
+    <address>address 3</address>
+    <home>3-3-3</home>
+    <mobile>222-222-3</mobile>
+    <work>(111) 123-45-3</work>
+    <email>3@test.test</email>
+    <email2>3@test.test2</email2>
+    <email3>3@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 4</name>
+    <lastname>lastname 4</lastname>
+    <address>address 4</address>
+    <home>4-4-4</home>
+    <mobile>222-222-4</mobile>
+    <work>(111) 123-45-4</work>
+    <email>4@test.test</email>
+    <email2>4@test.test2</email2>
+    <email3>4@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 5</name>
+    <lastname>lastname 5</lastname>
+    <address>address 5</address>
+    <home>5-5-5</home>
+    <mobile>222-222-5</mobile>
+    <work>(111) 123-45-5</work>
+    <email>5@test.test</email>
+    <email2>5@test.test2</email2>
+    <email3>5@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 6</name>
+    <lastname>lastname 6</lastname>
+    <address>address 6</address>
+    <home>6-6-6</home>
+    <mobile>222-222-6</mobile>
+    <work>(111) 123-45-6</work>
+    <email>6@test.test</email>
+    <email2>6@test.test2</email2>
+    <email3>6@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 7</name>
+    <lastname>lastname 7</lastname>
+    <address>address 7</address>
+    <home>7-7-7</home>
+    <mobile>222-222-7</mobile>
+    <work>(111) 123-45-7</work>
+    <email>7@test.test</email>
+    <email2>7@test.test2</email2>
+    <email3>7@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 8</name>
+    <lastname>lastname 8</lastname>
+    <address>address 8</address>
+    <home>8-8-8</home>
+    <mobile>222-222-8</mobile>
+    <work>(111) 123-45-8</work>
+    <email>8@test.test</email>
+    <email2>8@test.test2</email2>
+    <email3>8@test.test3</email3>
+  </contact>
+  <contact>
+    <name>name 9</name>
+    <lastname>lastname 9</lastname>
+    <address>address 9</address>
+    <home>9-9-9</home>
+    <mobile>222-222-9</mobile>
+    <work>(111) 123-45-9</work>
+    <email>9@test.test</email>
+    <email2>9@test.test2</email2>
+    <email3>9@test.test3</email3>
+  </contact>
+</list>

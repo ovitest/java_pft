@@ -16,3 +16,4 @@ gradle-app.setting
 .idea/misc.xml
 sandbox/src/main/java/ru/stqa/pft/sandbox/Equation.java
 sandbox/src/test/java/ru/stqa/pft/sandbox/EquationsTests.java
+*.log

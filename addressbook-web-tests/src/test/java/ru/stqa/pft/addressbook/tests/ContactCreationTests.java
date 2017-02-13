@@ -53,12 +53,11 @@ public class ContactCreationTests extends TestBase{
 
     @Test (dataProvider = "validContactsFromJson")
     public void ContactCreationTests(ContactData contact) {
-        app.goTo().homepage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         app.contact().create(contact);
         app.goTo().homepage();
         assertThat(app.contact().count(), equalTo(before.size() +1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }
@@ -66,7 +65,7 @@ public class ContactCreationTests extends TestBase{
     @Test
     public void ContactWithPhotoCreationTests() {
         app.goTo().homepage();
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         File photo = new File("src/test/resources/images.jpg");
         ContactData contact = new ContactData().withName("testname")
                 .withLastname("testlastname").withAddress("testaddress").withHome("testtelephone").withMobile("222")
@@ -74,7 +73,7 @@ public class ContactCreationTests extends TestBase{
         app.contact().create(contact);
         app.goTo().homepage();
         assertThat(app.contact().count(), equalTo(before.size() +1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
     }

@@ -242,19 +242,6 @@ public class ContactData {
     return group;
   }
 
-  public File getPhoto() {
-    return new File(photo);
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -264,7 +251,10 @@ public class ContactData {
 
     if (id != that.id) return false;
     if (name != null ? !name.equals(that.name) : that.name != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (home != null ? !home.equals(that.home) : that.home != null) return false;
+    return email != null ? email.equals(that.email) : that.email == null;
   }
 
   @Override
@@ -272,8 +262,26 @@ public class ContactData {
     int result = id;
     result = 31 * result + (name != null ? name.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (home != null ? home.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
     return result;
   }
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", home='" + home + '\'' +
+            ", email='" + email + '\'' +
+            '}';
+  }
+
+  public File getPhoto() {
+    return new File(photo);
+  }
 
 }

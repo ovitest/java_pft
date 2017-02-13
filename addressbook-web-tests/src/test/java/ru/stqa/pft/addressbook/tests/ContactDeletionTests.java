@@ -12,22 +12,22 @@ public class ContactDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().homepage();
-    if (app.contact().all().size() == 0){
-      app.contact().create(new ContactData().withName("test1").withLastname("test2").withGroup("test1"));
+    if (app.db().contacts().size() == 0){
+      app.goTo().homepage();
+      app.contact().create(new ContactData().withName("test1").withLastname("test2"));
 
       }
   }
 
   @Test
   public void deleteContactTest (){
-    app.goTo().homepage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
+    app.goTo().homepage();
     app.contact().delete(deletedContact);
     app.goTo().homepage();
     assertThat(app.contact().count(), equalTo(before.size() - 1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
 
 

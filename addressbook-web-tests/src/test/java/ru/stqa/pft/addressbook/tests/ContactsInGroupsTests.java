@@ -1,0 +1,30 @@
+package ru.stqa.pft.addressbook.tests;
+
+import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+/**
+ * Created by bcxtim on 16.02.2017.
+ */
+public class ContactsInGroupsTests extends TestBase {
+
+  @Test
+  public void testAddContactInGroup () {
+    ContactData contact = app.db().contacts().iterator().next();
+    GroupData group = app.db().groups().iterator().next();
+    Groups before = contact.getGroups();
+    app.goTo().homepage();
+    app.contact().putInGroup(contact, group);
+    app.goTo().homepage();
+    ContactData contactAfter = app.db().contacts().iterator().next();
+    Groups after = contactAfter.getGroups();
+    assertThat(after, equalTo(before.withAdded(group)));
+
+  }
+}

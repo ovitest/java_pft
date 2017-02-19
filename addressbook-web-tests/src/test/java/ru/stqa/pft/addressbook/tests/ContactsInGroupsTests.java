@@ -22,8 +22,14 @@ public class ContactsInGroupsTests extends TestBase {
     app.goTo().homepage();
     app.contact().putInGroup(contact, group);
     app.goTo().homepage();
-    ContactData contactAfter = app.db().contacts().iterator().next();
-    Groups after = contactAfter.getGroups();
+    Contacts contactsAfter = app.db().contacts();
+    ContactData modifiedContact = new ContactData();
+    for (ContactData c: contactsAfter) {
+      if (c.getId() == contact.getId()) {
+        modifiedContact = c;
+        }
+    }
+    Groups after = modifiedContact.getGroups();
     assertThat(after, equalTo(before.withAdded(group)));
 
   }

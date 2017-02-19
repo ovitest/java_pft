@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-import sun.plugin.javascript.navig.Array;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -35,9 +33,9 @@ public class TestBase {
     app.init();
   }
 
-  @AfterSuite (alwaysRun = true)
+  @AfterSuite(alwaysRun = true)
   public void tearDown() {
-      app.stop();
+    app.stop();
   }
 
   @BeforeMethod
@@ -46,8 +44,8 @@ public class TestBase {
 
   }
 
-  @AfterMethod (alwaysRun = true)
-  public void logTestStop (Method m){
+  @AfterMethod(alwaysRun = true)
+  public void logTestStop(Method m) {
     logger.info("Stop test " + m.getName());
 
   }
@@ -61,6 +59,7 @@ public class TestBase {
               .collect(Collectors.toSet())));
     }
   }
+
   public void verifyContactListInUI() {
     if (Boolean.getBoolean("verifyUI")) {
       Contacts dbContacts = app.db().contacts();

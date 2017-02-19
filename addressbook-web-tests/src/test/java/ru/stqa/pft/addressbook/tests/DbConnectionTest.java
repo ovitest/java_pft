@@ -11,8 +11,8 @@ import java.sql.*;
  */
 public class DbConnectionTest {
 
-  @Test (enabled = false)
-  public void testDbConnection () {
+  @Test(enabled = false)
+  public void testDbConnection() {
     Connection conn = null;
     try {
       conn =

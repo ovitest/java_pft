@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -39,18 +38,15 @@ public class ContactHelper extends BaseHelper {
     if (creation) {
       if (contactData.getGroups().size() > 0) {
         Assert.assertTrue(contactData.getGroups().size() == 1);
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-      } else {
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
+       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
     try {
       attach(By.name("photo"), contactData.getPhoto());
-    } catch (NullPointerException n){
-      System.out.println("There is no photo");
-      return;
+   } catch (NullPointerException n){
+     return;
     }
 
   }
@@ -110,13 +106,6 @@ public class ContactHelper extends BaseHelper {
     contactCache = null;
   }
 
-  public void putInGroup(ContactData contact, GroupData group) {
-    selectContactById(contact.getId());
-    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
-    click(By.name("add"));
-    contactCache = null;
-  }
-
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -172,7 +161,6 @@ public class ContactHelper extends BaseHelper {
     wd.navigate().back();
     return details;
   }
-
 
 
 }

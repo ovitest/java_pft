@@ -169,4 +169,23 @@ public class ContactHelper extends BaseHelper {
     new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
     click(By.name("add"));
   }
+
+  public Contacts notInGroup() {
+    Contacts contacts = new Contacts();
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[none]");
+    List<WebElement> elements = wd.findElements(By.name("entry"));
+    for (WebElement element : elements) {
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String allPhones = cells.get(5).getText();
+      String allAdresses = cells.get(3).getText();
+      String allEmails = cells.get(4).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add(new ContactData().withId(id).withName(firstname).withLastname(lastname)
+              .withAddress(allAdresses).withAllEmails(allEmails).withAllPhones(allPhones));
+    }
+    return new Contacts(contacts);
+  }
+
 }

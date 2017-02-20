@@ -170,6 +170,12 @@ public class ContactHelper extends BaseHelper {
     click(By.name("add"));
   }
 
+  public void removeFromGroup(ContactData contact, GroupData group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+  }
+
   public Contacts notInGroup() {
     Contacts contacts = new Contacts();
     new Select(wd.findElement(By.name("group"))).selectByVisibleText("[none]");
@@ -187,5 +193,6 @@ public class ContactHelper extends BaseHelper {
     }
     return new Contacts(contacts);
   }
+
 
 }

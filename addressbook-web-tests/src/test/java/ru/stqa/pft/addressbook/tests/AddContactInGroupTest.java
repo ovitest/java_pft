@@ -20,8 +20,8 @@ public class AddContactInGroupTest extends TestBase {
     app.goTo().homepage();
     if (app.db().contacts().size() == 0) {
       app.goTo().homepage();
-      app.contact().create(new ContactData().withName("test1").withLastname("test2"));}
-      else if (app.contact().notInGroup().size() == 0) {
+      app.contact().create(new ContactData().withName("test1").withLastname("test2"));
+    } else if (app.contact().notInGroup().size() == 0) {
       app.goTo().homepage();
       app.contact().create(new ContactData().withName("test1").withLastname("test2"));
     }
@@ -32,7 +32,7 @@ public class AddContactInGroupTest extends TestBase {
   }
 
   @Test
-  public void testAddContactInGroup () {
+  public void testAddContactInGroup() {
     app.goTo().homepage();
     ContactData contact = app.contact().notInGroup().iterator().next();
     GroupData group = app.db().groups().iterator().next();
@@ -41,10 +41,11 @@ public class AddContactInGroupTest extends TestBase {
     app.goTo().homepage();
     Contacts contactsAfter = app.db().contacts();
     ContactData modifiedContact = new ContactData();
-    for (ContactData c: contactsAfter) {
+    for (ContactData c : contactsAfter) {
       if (c.getId() == contact.getId()) {
         modifiedContact = c;
-        }
+        break;
+      }
     }
     Groups after = modifiedContact.getGroups();
     assertThat(after, equalTo(before.withAdded(group)));

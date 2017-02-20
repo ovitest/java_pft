@@ -26,7 +26,7 @@ public class NavigationHelper extends BaseHelper {
       return;
     }
 
-     click(By.linkText("home"));
+     click(By.id("logo"));
   }
 
   public void gotoNewContactPage() {

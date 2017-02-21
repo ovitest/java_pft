@@ -39,7 +39,7 @@ public class ApplicationManager {
       wd = new InternetExplorerDriver();
     }
     wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.BaseUrl"));
+    wd.get(properties.getProperty("web.baseUrl"));
 
 
   }
@@ -48,4 +48,11 @@ public class ApplicationManager {
     wd.quit();
   }
 
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
 }

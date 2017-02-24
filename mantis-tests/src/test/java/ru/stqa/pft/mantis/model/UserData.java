@@ -2,11 +2,14 @@ package ru.stqa.pft.mantis.model;
 
 
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@XStreamAlias("user")
 @Entity
 @Table(name = "mantis_user_table")
 public class UserData {

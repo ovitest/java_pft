@@ -71,6 +71,7 @@
     <orderEntry type="library" name="Gradle: org.eclipse.jetty.websocket:websocket-api:9.2.15.v20160210" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.thoughtworks.xstream:xstream:1.4.9" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="mantis-tests_main" />
 </module>

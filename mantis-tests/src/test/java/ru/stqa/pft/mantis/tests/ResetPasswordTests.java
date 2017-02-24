@@ -12,7 +12,6 @@ import ru.stqa.pft.mantis.model.Users;
 
 import java.io.IOException;
 
-
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -29,9 +28,9 @@ public class ResetPasswordTests extends TestBase {
   public void testResetPassword() throws IOException {
     HttpSession session = app.newSession();
     Users users = app.db().users();
-    UserData user =  new UserData();
-    for (UserData u: users){
-      if (u.getEmail() == "user1@localhost.localdomain"){
+    UserData user = new UserData();
+    for (UserData u : users) {
+      if (u.getEmail().equals("user1@localhost.localdomain")) {
         user = u;
         break;
       }
@@ -48,7 +47,8 @@ public class ResetPasswordTests extends TestBase {
   }
 
   @AfterMethod(alwaysRun = true)
-  public void stopMailServer(){
+  public void stopMailServer() {
     app.mail().stop();
   }
+
 }

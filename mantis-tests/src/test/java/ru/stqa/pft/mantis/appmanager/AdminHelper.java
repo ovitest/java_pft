@@ -24,6 +24,11 @@ public class AdminHelper extends BaseHelper {
     wd.get(app.getProperty("web.baseUrl") + "/manage_user_page.php");
   }
 
+  public void selectUserById(UserData user){
+    click(By.cssSelector("a[href='manage_user_edit_page.php?user_id=" + user.getId() + "'"));
+
+  }
+
   public void resetPassword(UserData user) {
     wd.get(app.getProperty("web.baseUrl") + "/manage_user_edit_page.php?user_id=" + user.getId());
     click(By.cssSelector("input[value='Сбросить пароль']"));

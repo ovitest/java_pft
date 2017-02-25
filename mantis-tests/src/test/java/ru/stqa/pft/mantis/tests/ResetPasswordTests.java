@@ -30,7 +30,7 @@ public class ResetPasswordTests extends TestBase {
     Users users = app.db().users();
     UserData user = new UserData();
     for (UserData u : users) {
-      if (u.getEmail().equals("user1@localhost.localdomain")) {
+      if (u.getEmail().equals("user1488011878692@localhost.localdomain")) { //задается почта юзера, которому меняется пароль
         user = u;
         break;
       }

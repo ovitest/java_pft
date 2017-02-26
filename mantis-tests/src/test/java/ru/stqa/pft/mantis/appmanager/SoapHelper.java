@@ -35,7 +35,7 @@ public class SoapHelper {
 
   private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     return new MantisConnectLocator()
-              .getMantisConnectPort(new URL(app.getProperty("api.connectionURL")));
+            .getMantisConnectPort(new URL(app.getProperty("api.connectionURL")));
   }
 
   public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
@@ -52,5 +52,21 @@ public class SoapHelper {
             .withSummary(createdIssueData.getSummary()).withProject(new Project()
                     .withId(createdIssueData.getProject().getId().intValue())
                     .withName(createdIssueData.getProject().getName()));
+  }
+
+  public String issueStatus(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    IssueData issueData = mc.mc_issue_get((app.getProperty("web.adminLogin")), app.getProperty("web.adminPassword"), BigInteger.valueOf(issue.getId()));
+    String status = issueData.getStatus().getName();
+    return status;
+
+  }
+
+  public Issue selectIssueById(int issueId) throws MalformedURLException, ServiceException, RemoteException {
+    MantisConnectPortType mc = getMantisConnect();
+    IssueData issueData = mc.mc_issue_get((app.getProperty("web.adminLogin"))
+            , app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
+    return new Issue().withId(issueId).withSummary(issueData.getSummary())
+            .withDescription(issueData.getDescription()).withStatus(issueData.getStatus().getName());
   }
 }

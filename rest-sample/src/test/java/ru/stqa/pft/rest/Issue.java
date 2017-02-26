@@ -8,6 +8,16 @@ public class Issue {
   private int id;
   private String subject;
   private String description;
+  private String state_name;
+
+  public String getStatus() {
+    return state_name;
+  }
+
+  public Issue withStatus(String status) {
+    this.state_name = status;
+    return this;
+  }
 
   public int getId() {
     return id;
@@ -29,15 +39,6 @@ public class Issue {
 
   public String getDescription() {
     return description;
-  }
-
-  @Override
-  public String toString() {
-    return "Issue{" +
-            "id=" + id +
-            ", subject='" + subject + '\'' +
-            ", description='" + description + '\'' +
-            '}';
   }
 
   @Override
@@ -64,5 +65,15 @@ public class Issue {
     this.description = description;
     return this;
 
+  }
+
+  @Override
+  public String toString() {
+    return "Issue{" +
+            "id=" + id +
+            ", subject='" + subject + '\'' +
+            ", description='" + description + '\'' +
+            ", status='" + state_name + '\'' +
+            '}';
   }
 }

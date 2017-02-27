@@ -31,7 +31,7 @@ public class AddContactInGroupTest extends TestBase {
     }
   }
 
-  @Test
+  @Test(enabled = false)
   public void testAddContactInGroup() {
     app.goTo().homepage();
     ContactData contact = app.contact().notInGroup().iterator().next();

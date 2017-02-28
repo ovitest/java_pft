@@ -46,6 +46,10 @@ public class ApplicationManager {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
+      } else {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName(browser);
+        wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
       }
       wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
@@ -54,12 +58,6 @@ public class ApplicationManager {
       navigationHelper = new NavigationHelper(wd);
       sessionHelper = new SessionHelper(wd);
       sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
-
-
-    } else {
-      DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setBrowserName(browser);
-      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
     }
   }
 

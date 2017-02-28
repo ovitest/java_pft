@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -27,7 +26,7 @@ public class ApplicationManager {
   private String browser;
   private DbHelper dbHelper;
 
-  public ApplicationManager(String browser){
+  public ApplicationManager(String browser) {
     this.browser = browser;
     properties = new Properties();
 
@@ -46,25 +45,25 @@ public class ApplicationManager {
         wd = new ChromeDriver();
       } else if (browser.equals(BrowserType.IE)) {
         wd = new InternetExplorerDriver();
-      } else {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName(browser);
-        wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
       }
-      wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-      wd.get(properties.getProperty("web.baseUrl"));
-      contactHelper = new ContactHelper(wd);
-      groupHelper = new GroupHelper(wd);
-      navigationHelper = new NavigationHelper(wd);
-      sessionHelper = new SessionHelper(wd);
-      sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+    } else {
+      DesiredCapabilities capabilities = new DesiredCapabilities();
+      capabilities.setBrowserName(browser);
+      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
     }
+    wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+    wd.get(properties.getProperty("web.baseUrl"));
+    contactHelper = new ContactHelper(wd);
+    groupHelper = new GroupHelper(wd);
+    navigationHelper = new NavigationHelper(wd);
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+
   }
 
 
-
   public void stop() {
-     wd.quit();
+    wd.quit();
   }
 
   public GroupHelper group() {
@@ -79,7 +78,7 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public DbHelper db () {
+  public DbHelper db() {
     return dbHelper;
   }
 }

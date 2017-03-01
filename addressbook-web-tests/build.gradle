@@ -55,4 +55,24 @@ task testContacts(type: Test) {
     if (project.hasProperty('verifyUI')) {
         systemProperty 'verifyUI', "${verifyUI}"
     }
+
+
+}
+
+task testAll(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-all.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('platform')) {
+        systemProperty 'platform', "${platform}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
 }
